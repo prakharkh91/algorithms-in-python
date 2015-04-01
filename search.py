@@ -18,7 +18,6 @@ def binary_search(x, given_list):
     if (len(given_list) >= 1):
         mid = given_list[len(given_list)/2]
         print "len: " + str(len(given_list)) + " : mid : " + str(mid)
-        print x == mid
         if (x == mid):
             return True
         else:
@@ -31,4 +30,4 @@ def binary_search(x, given_list):
 
 x = range(100)
 random.shuffle(x)
-print binary_search(5000, x)
+print binary_search(50, x)
