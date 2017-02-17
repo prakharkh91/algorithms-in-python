@@ -7,26 +7,40 @@ class ListNode(object):
 class Solution(object):
     def swapPairs(self, head):
         """
+        1 2 3 4 5 6 7 8
+
         :type head: ListNode
         :rtype: ListNode
         """
-        # No nodes
-        if not head:
+        s1 = head
+        if s1 is None:
             return head
-        first = head
-        node = head
-        second = first.next
-
-        # One Node
-        if second is not None:
-            head = second
-        else:
+        s2 = head.next
+        if s2 is None:
             return head
+        temp = s2.next
+        head = s2
 
-        while node is not None and node.next is not None:
-            third = second.next
-            
+        while True:
+            if temp is None:
+                s2.next = s1
+                s1.next = None
+                return head
+            s1, s2, temp = self.swapTwo(s1, s2, temp)
+            if temp.next is None:
+                s1.next = temp
+                return head
+            s1 = temp
+            if s1 is None:
+                return head
+            s2 = s1.next
+            if s2 is None:
+                return head
+            temp = s2.next
 
+    def swapTwo(self, s1, s2, temp):
+        s2.next = s1
+        s1.next = temp.next
+        return s1, s2, temp
 
-        return head
 
